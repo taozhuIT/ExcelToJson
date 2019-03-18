@@ -174,7 +174,15 @@ namespace ExcelToJson
         private void OnJsonSerializer(FileSystemInfo fileInfo_, Dictionary<string, List<Dictionary<string, object>>> chartJsonStruct_)
         {
             Console.Write("开始  "+ fileInfo_.Name+ "  文件数据json序列化\n");
-            string creatPath = fileInfo_.FullName.Replace(@"\Conf", @"\Json").Replace(".xlsx", ".json");
+            string creatPath = null;
+            if (fileInfo_.FullName.Contains(@"\Conf"))
+                creatPath = fileInfo_.FullName.Replace(@"\Conf", @"\Json").Replace(".xlsx", ".json");
+            else
+            {
+                int index = fileInfo_.FullName.LastIndexOf(@"\");
+                string path = fileInfo_.FullName.Substring(0, index);
+                creatPath = (path + "\\Json\\" + fileInfo_.Name).Replace(".xlsx", ".json");
+            }
 
             // 创建存放Json文件的文件夹
             int folderIndex = creatPath.LastIndexOf(@"\");
