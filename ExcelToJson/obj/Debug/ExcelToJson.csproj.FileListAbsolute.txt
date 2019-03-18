@@ -1,0 +1,10 @@
+F:\ExcelJsonProject\ExcelToJson\ExcelToJson\bin\Debug\ExcelToJson.exe.config
+F:\ExcelJsonProject\ExcelToJson\ExcelToJson\bin\Debug\ExcelToJson.exe
+F:\ExcelJsonProject\ExcelToJson\ExcelToJson\bin\Debug\ExcelToJson.pdb
+F:\ExcelJsonProject\ExcelToJson\ExcelToJson\obj\Debug\ExcelToJson.csproj.CoreCompileInputs.cache
+F:\ExcelJsonProject\ExcelToJson\ExcelToJson\obj\Debug\ExcelToJson.exe
+F:\ExcelJsonProject\ExcelToJson\ExcelToJson\obj\Debug\ExcelToJson.pdb
+F:\ExcelJsonProject\ExcelToJson\ExcelToJson\bin\Debug\Newtonsoft.Json.dll
+F:\ExcelJsonProject\ExcelToJson\ExcelToJson\bin\Debug\Newtonsoft.Json.pdb
+F:\ExcelJsonProject\ExcelToJson\ExcelToJson\bin\Debug\Newtonsoft.Json.xml
+F:\ExcelJsonProject\ExcelToJson\ExcelToJson\obj\Debug\ExcelToJson.csproj.CopyComplete
