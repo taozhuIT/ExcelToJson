@@ -7,7 +7,6 @@ using Newtonsoft.Json;
 using System.Data.OleDb;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace ExcelToJson
 {
@@ -94,6 +93,8 @@ namespace ExcelToJson
                 // ------------------------得到Excel文件的Table/Sheet信息-----------------
                 Console.Write("获取  " + info.Name + "  Table/Sheet信息完成\n");
 
+                
+
                 // ------------------------创建序列化Json的数据结构------------------------
                 // Json数据使用的key
                 List<string> keys = new List<string>();
@@ -103,29 +104,21 @@ namespace ExcelToJson
                 for (int i = 0; i < tableList.Count; ++i)
                 {
                     DataTable tableDt = tableList[i];
+
                     if (tableDt.Rows.Count < 2)
                         throw new Exception("表必须包含数据");
 
                     // 得到表中其中一个Table的json结构
-                    List<Dictionary<string, object>> tableJsonStruct = null;
-                    if (chartJsonStruct.ContainsKey(tableDt.TableName))
-                    {
-                        tableJsonStruct = chartJsonStruct[tableDt.TableName];
-                    }
-                    else
-                    {
-                        tableJsonStruct = new List<Dictionary<string, object>>();
-                        chartJsonStruct.Add(tableDt.TableName, tableJsonStruct);
-                    }
+                    List<Dictionary<string, object>> tableJsonStruct = OnGetTableStruct(tableDt, chartJsonStruct);
 
                     // table中的数据行
                     for (int n = 0; n < tableDt.Rows.Count; ++n)
                     {
+                        DataRow headRow = tableDt.Rows[n];
+
                         // 0行是注释
                         if (n > 0)
                         {
-                            DataRow headRow = tableDt.Rows[n];
-
                             // 第1行配置是json_key
                             if (n == 1)
                             {
@@ -137,25 +130,7 @@ namespace ExcelToJson
                             }
                             else
                             {
-                                // 得到表中其中一个Table中的一个数据类json的结构
-                                Dictionary<string, object> itemStruct = new Dictionary<string, object>();
-                                for (int x = 0; x < headRow.ItemArray.Length; ++x)
-                                {
-                                    string key = keys[x];
-
-                                    object valObj = headRow.ItemArray[x];
-                                    if (IsNumber(valObj.ToString()))
-                                    {
-                                        int val = int.Parse(headRow.ItemArray[x].ToString());
-                                        itemStruct.Add(key, val);
-                                    }
-                                    else
-                                    {
-                                        string val = headRow.ItemArray[x].ToString();
-                                        itemStruct.Add(key, val);
-                                    }
-                                }
-                                tableJsonStruct.Add(itemStruct);
+                                OnFillHorizontaData(headRow, keys, tableJsonStruct);
                             }
                         }
                     }
@@ -169,34 +144,81 @@ namespace ExcelToJson
         }
 
         /// <summary>
+        /// 得到Excel表中一个页卡的Json结构
+        /// </summary>
+        private List<Dictionary<string, object>> OnGetTableStruct(DataTable tableDt_, Dictionary<string, List<Dictionary<string, object>>> chartJsonStruct_)
+        {
+            List<Dictionary<string, object>> tableStruct = null;
+
+            if (chartJsonStruct_.ContainsKey(tableDt_.TableName))
+            {
+                tableStruct = chartJsonStruct_[tableDt_.TableName];
+            }
+            else
+            {
+                tableStruct = new List<Dictionary<string, object>>();
+                chartJsonStruct_.Add(tableDt_.TableName, tableStruct);
+            }
+
+            return tableStruct;
+        }
+
+        /// <summary>
+        /// 填充json一行的数据
+        /// </summary>
+        private void OnFillHorizontaData(DataRow headRow_, List<string> keys_, List<Dictionary<string, object>> tableJsonStruct_)
+        {
+            Dictionary<string, object> horizontalStruct = new Dictionary<string, object>();
+            for (int x = 0; x < headRow_.ItemArray.Length; ++x)
+            {
+                string key = keys_[x];
+
+                object valObj = headRow_.ItemArray[x];
+                if (Util.IsNumber(valObj.ToString()))
+                {
+                    int val = int.Parse(headRow_.ItemArray[x].ToString());
+                    horizontalStruct.Add(key, val);
+                }
+                else
+                {
+                    string val = headRow_.ItemArray[x].ToString();
+                    horizontalStruct.Add(key, val);
+                }
+            }
+
+            // 往Table结构中填充一行数据的结构
+            tableJsonStruct_.Add(horizontalStruct);
+        }
+
+        /// <summary>
         /// 序列化数据成json文件
         /// </summary>
         private void OnJsonSerializer(FileSystemInfo fileInfo_, Dictionary<string, List<Dictionary<string, object>>> chartJsonStruct_)
         {
             Console.Write("开始  "+ fileInfo_.Name+ "  文件数据json序列化\n");
-            string creatPath = null;
-            if (fileInfo_.FullName.Contains(@"\Conf"))
-                creatPath = fileInfo_.FullName.Replace(@"\Conf", @"\Json").Replace(".xlsx", ".json");
-            else
-            {
-                int index = fileInfo_.FullName.LastIndexOf(@"\");
-                string path = fileInfo_.FullName.Substring(0, index);
-                creatPath = (path + "\\Json\\" + fileInfo_.Name).Replace(".xlsx", ".json");
-            }
+            
+            // 原始Excel文件路径
+            string origPath = fileInfo_.FullName;
+
+            // 存放Json文件的路径
+            string stocPath = null;
+            string reppath = fileInfo_.FullName.Substring(0, origPath.LastIndexOf(@"\"));
+            string repName = fileInfo_.Name.Replace(".xlsx", ".json");
+            stocPath = (reppath + "\\Json\\" + repName);
+            
 
             // 创建存放Json文件的文件夹
-            int folderIndex = creatPath.LastIndexOf(@"\");
-            string jsonFolderPath = creatPath.Substring(0, folderIndex);
+            string jsonFolderPath = stocPath.Substring(0, stocPath.LastIndexOf(@"\"));
             if (!Directory.Exists(jsonFolderPath))
                 Directory.CreateDirectory(jsonFolderPath);
+            
+            // 创建json文件
+            if (File.Exists(stocPath))
+                File.Delete(stocPath);
+            FileStream fs = File.Create(stocPath);
 
             // 序列化json数据
             string SerializeJson = JsonConvert.SerializeObject(chartJsonStruct_);
-            
-            // 创建json文件
-            if (File.Exists(creatPath))
-                File.Delete(creatPath);
-            FileStream fs = File.Create(creatPath);
 
             // 写入数据
             // 格式json字符串（不格式话，显示就是一行显示所有数据）
@@ -261,17 +283,6 @@ namespace ExcelToJson
             {
                 return str;
             }
-        }
-
-        /// <summary>
-        /// 判断字符串是否是数字
-        /// </summary>
-        public bool IsNumber(string s)
-        {
-            if (string.IsNullOrWhiteSpace(s)) return false;
-            const string pattern = "^[0-9]*$";
-            Regex rx = new Regex(pattern);
-            return rx.IsMatch(s);
         }
     }
 }

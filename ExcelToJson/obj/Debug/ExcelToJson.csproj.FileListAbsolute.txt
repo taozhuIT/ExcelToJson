@@ -18,3 +18,4 @@ F:\ExcelToJson\ExcelToJson\obj\Debug\ExcelToJson.csproj.CoreCompileInputs.cache
 F:\ExcelToJson\ExcelToJson\obj\Debug\ExcelToJson.csproj.CopyComplete
 F:\ExcelToJson\ExcelToJson\obj\Debug\ExcelToJson.exe
 F:\ExcelToJson\ExcelToJson\obj\Debug\ExcelToJson.pdb
+F:\ExcelToJson\ExcelToJson\obj\Debug\ExcelToJson.csprojAssemblyReference.cache
