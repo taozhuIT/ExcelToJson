@@ -37,8 +37,6 @@ namespace ExcelToJson
         public void Init()
         {
             OnStartExcelToJson();
-            Console.Write("请按任意键继续.......");
-            Console.ReadLine();
         }
         /// <summary>
         /// 开始进行文件转换
@@ -125,7 +123,11 @@ namespace ExcelToJson
                                 keys.Clear();
                                 for (int j = 0; j < headRow.ItemArray.Length; ++j)
                                 {
-                                    keys.Add(headRow.ItemArray[j].ToString());
+                                    string key = headRow.ItemArray[j].ToString();
+
+                                    // 过滤空参数
+                                    if (key != null && key != "")
+                                        keys.Add(headRow.ItemArray[j].ToString());
                                 }
                             }
                             else
@@ -171,18 +173,53 @@ namespace ExcelToJson
             Dictionary<string, object> horizontalStruct = new Dictionary<string, object>();
             for (int x = 0; x < headRow_.ItemArray.Length; ++x)
             {
-                string key = keys_[x];
-
                 object valObj = headRow_.ItemArray[x];
-                if (Util.IsNumber(valObj.ToString()))
+                string valStr = valObj.ToString();
+                
+                // 过滤空参数
+                if (valStr != null && valStr != " " && valStr != "")
                 {
-                    int val = int.Parse(headRow_.ItemArray[x].ToString());
-                    horizontalStruct.Add(key, val);
-                }
-                else
-                {
-                    string val = headRow_.ItemArray[x].ToString();
-                    horizontalStruct.Add(key, val);
+                    string key = keys_[x];
+                    string origVal = headRow_.ItemArray[x].ToString();
+
+                    // 类型转换
+                    if (Util.IsNumber(origVal))       
+                    {
+                        // 转换Int
+                        int curVal = int.Parse(origVal);
+                        horizontalStruct.Add(key, curVal);
+                    }
+                    else if (Util.IsBool(origVal))    
+                    {
+                        // 转换Bool
+                        bool curVal = false;
+
+                        // 这里加这么一句，因为在Excel里面的填写布尔值的单元格格式不是文本的话，获取到的excle的false或者true，会变成“真”或者“假”
+                        if (origVal.Equals("真") || origVal.Equals("假"))
+                        {
+                            if (origVal.Equals("真"))
+                                curVal = true;
+                            if (origVal.Equals("假"))
+                                curVal = false;
+                        }
+                        else
+                        {
+                            curVal = bool.Parse(origVal);
+                        }
+                        
+                        horizontalStruct.Add(key, curVal);
+                    }
+                    else if (Util.IsFloat(origVal))    
+                    {
+                        // 转换Float
+                        float val = float.Parse(origVal);
+                        horizontalStruct.Add(key, val);
+                    }
+                    else
+                    {
+                        // 默认转换string
+                        horizontalStruct.Add(key, origVal);
+                    }
                 }
             }
 
@@ -196,36 +233,48 @@ namespace ExcelToJson
         private void OnJsonSerializer(FileSystemInfo fileInfo_, Dictionary<string, List<Dictionary<string, object>>> chartJsonStruct_)
         {
             Console.Write("开始  "+ fileInfo_.Name+ "  文件数据json序列化\n");
-            
-            // 原始Excel文件路径
-            string origPath = fileInfo_.FullName;
 
-            // 存放Json文件的路径
-            string stocPath = null;
-            string reppath = fileInfo_.FullName.Substring(0, origPath.LastIndexOf(@"\"));
-            string repName = fileInfo_.Name.Replace(".xlsx", ".json");
-            stocPath = (reppath + "\\Json\\" + repName);
-            
+            try
+            {
+                // 原始Excel文件路径
+                string origPath = fileInfo_.FullName;
 
-            // 创建存放Json文件的文件夹
-            string jsonFolderPath = stocPath.Substring(0, stocPath.LastIndexOf(@"\"));
-            if (!Directory.Exists(jsonFolderPath))
-                Directory.CreateDirectory(jsonFolderPath);
-            
-            // 创建json文件
-            if (File.Exists(stocPath))
-                File.Delete(stocPath);
-            FileStream fs = File.Create(stocPath);
+                // 存放Json文件的路径
+                string stocPath = null;
+                string reppath = fileInfo_.FullName.Substring(0, origPath.LastIndexOf(@"\"));
+                string repName = fileInfo_.Name.Replace(".xlsx", ".json");
+                stocPath = (reppath + "\\Json\\" + repName);
 
-            // 序列化json数据
-            string SerializeJson = JsonConvert.SerializeObject(chartJsonStruct_);
 
-            // 写入数据
-            // 格式json字符串（不格式话，显示就是一行显示所有数据）
-            string convertJson = ConvertJsonString(SerializeJson);
-            byte[] byteJson = Encoding.Default.GetBytes(convertJson);
-            fs.Write(byteJson, 0, byteJson.Length);
-            fs.Close();
+                // 创建存放Json文件的文件夹
+                string jsonFolderPath = stocPath.Substring(0, stocPath.LastIndexOf(@"\"));
+                if (!Directory.Exists(jsonFolderPath))
+                    Directory.CreateDirectory(jsonFolderPath);
+
+                // 创建json文件
+                if (File.Exists(stocPath))
+                    File.Delete(stocPath);
+                FileStream fs = File.Create(stocPath);
+
+                // 序列化json数据
+                string SerializeJson = JsonConvert.SerializeObject(chartJsonStruct_);
+
+                // 写入数据
+                // 格式json字符串（不格式话，显示就是一行显示所有数据）
+                string convertJson = ConvertJsonString(SerializeJson);
+                byte[] byteJson = Encoding.UTF8.GetBytes(convertJson);
+                fs.Write(byteJson, 0, byteJson.Length);
+                fs.Close();
+            }
+            catch (Exception except)
+            {
+                // 文件写入权限问题
+                if (except.GetType() == typeof(System.UnauthorizedAccessException))
+                {
+                    Console.Write("\n无法创建json文件，请右键以管理员身份运行\n");
+                    Console.ReadLine();
+                }
+            }
         }
 
         /// <summary>
