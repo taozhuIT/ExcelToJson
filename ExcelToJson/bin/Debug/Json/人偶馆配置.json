@@ -1,0 +1,115 @@
+{
+    "body": [
+        {
+            "uuid": "12000001_upper_1",
+            "name": "佩奇的衣服",
+            "type": "衣服",
+            "item": "猫猫",
+            "icon": "${device}/Module/Doll/Icon&12000001_upper_1",
+            "model": "${device}/Module/Doll/Mdl/12000001/upper_1.prefab.assetbundle",
+            "desc": "描述一个！"
+        },
+        {
+            "uuid": "12000001_upper_2",
+            "name": "钢铁侠的衣服",
+            "type": "衣服",
+            "item": "猫猫",
+            "icon": "${device}/Module/Doll/Icon&12000001_upper_2",
+            "model": "${device}/Module/Doll/Mdl/12000001/upper_2.prefab.assetbundle",
+            "desc": "描述一个！"
+        },
+        {
+            "uuid": "12000001_lower_1",
+            "name": "佩奇的裤子",
+            "type": "裤子",
+            "item": "猫猫",
+            "icon": "${device}/Module/Doll/Icon&12000001_lower_1",
+            "model": "${device}/Module/Doll/Mdl/12000001/lower_1.prefab.assetbundle",
+            "desc": "描述一个！"
+        },
+        {
+            "uuid": "12000001_lower_2",
+            "name": "钢铁侠的裤子",
+            "type": "裤子",
+            "item": "猫猫",
+            "icon": "${device}/Module/Doll/Icon&12000001_lower_2",
+            "model": "${device}/Module/Doll/Mdl/12000001/lower_2.prefab.assetbundle",
+            "desc": "描述一个！"
+        },
+        {
+            "uuid": "12000001_hair_1",
+            "name": "佩奇的头发",
+            "type": "头发",
+            "item": "猫猫",
+            "icon": "${device}/Module/Doll/Icon&12000001_hair_1",
+            "model": "${device}/Module/Doll/Mdl/12000001/hair_1.prefab.assetbundle",
+            "desc": "描述一个！"
+        },
+        {
+            "uuid": "12000001_hair_2",
+            "name": "钢铁侠的头发",
+            "type": "头发",
+            "item": "猫猫",
+            "icon": "${device}/Module/Doll/Icon&12000001_hair_2",
+            "model": "${device}/Module/Doll/Mdl/12000001/hair_2.prefab.assetbundle",
+            "desc": "描述一个！"
+        },
+        {
+            "uuid": "12000001_shoe_1",
+            "name": "皮鞋",
+            "type": "鞋子",
+            "item": "猫猫",
+            "icon": "${device}/Module/Doll/Icon&12000001_shoe_1",
+            "model": "${device}/Module/Doll/Mdl/12000001/shoe_1.prefab.assetbundle",
+            "desc": "描述一个！"
+        },
+        {
+            "uuid": "12000001_shoe_2",
+            "name": "布鞋",
+            "type": "鞋子",
+            "item": "猫猫",
+            "icon": "${device}/Module/Doll/Icon&12000001_shoe_2",
+            "model": "${device}/Module/Doll/Mdl/12000001/shoe_2.prefab.assetbundle",
+            "desc": "描述一个！"
+        }
+    ],
+    "data": [
+        {
+            "uuid": 12000001,
+            "name": "猫猫",
+            "icon": "${device}/Module/Doll/Icon&12000001",
+            "upperModel": "${device}/Module/Doll/Mdl/12000001/upper.prefab.assetbundle",
+            "lowerModel": "${device}/Module/Doll/Mdl/12000001/lower.prefab.assetbundle",
+            "hairModel": "${device}/Module/Doll/Mdl/12000001/hair.prefab.assetbundle",
+            "shoeModel": "${device}/Module/Doll/Mdl/12000001/shoe.prefab.assetbundle",
+            "commonSkin": "${device}/Module/Doll/Mdl/12000001/skin_common.prefab.assetbundle",
+            "fatterSkin": "${device}/Module/Doll/Mdl/12000001/skin_fatter.prefab.assetbundle",
+            "strongSkin": "${device}/Module/Doll/Mdl/12000001/skin_strong.prefab.assetbundle",
+            "desc": "这是一只小小猫！",
+            "test1": false,
+            "test2": 52.36
+        }
+    ],
+    "head": [
+        {
+            "face": "$/Module/Doll/Face_1.png",
+            "model": "${device}/Module/Doll/Mdl/12000001_u.prefab.assetbundle"
+        },
+        {
+            "face": "$/Module/Doll/Face_2.png",
+            "model": "${device}/Module/Doll/Mdl/12000002_u.prefab.assetbundle"
+        },
+        {
+            "face": "$/Module/Doll/Face_3.png",
+            "model": "${device}/Module/Doll/Mdl/12000003_u.prefab.assetbundle"
+        },
+        {
+            "face": "$/Module/Doll/Face_4.png",
+            "model": "${device}/Module/Doll/Mdl/12000004_u.prefab.assetbundle"
+        },
+        {
+            "face": "$/Module/Doll/Face_5.png",
+            "model": "${device}/Module/Doll/Mdl/12000005_u.prefab.assetbundle"
+        }
+    ]
+}

@@ -1,0 +1,156 @@
+{
+    "data": [
+        {
+            "uuid": 10000001,
+            "name": "玩偶1",
+            "icon": "${device}/Module/Model/Icon&10000001",
+            "sort": "玩偶",
+            "modelOverall": "${device}/Module/Model/Mdl/10000001_e.prefab.assetbundle",
+            "desc": "这个人偶真可爱呀真可爱！"
+        },
+        {
+            "uuid": 10000002,
+            "name": "玩偶2",
+            "icon": "${device}/Module/Model/Icon&10000002",
+            "sort": "玩偶",
+            "modelOverall": "${device}/Module/Model/Mdl/10000002_e.prefab.assetbundle",
+            "desc": "这个人偶真可爱呀真可爱！"
+        },
+        {
+            "uuid": 10000003,
+            "name": "玩偶3",
+            "icon": "${device}/Module/Model/Icon&10000003",
+            "sort": "玩偶",
+            "modelOverall": "${device}/Module/Model/Mdl/10000003_e.prefab.assetbundle",
+            "desc": "这个人偶真可爱呀真可爱！"
+        },
+        {
+            "uuid": 10000004,
+            "name": "玩偶4",
+            "icon": "${device}/Module/Model/Icon&10000004",
+            "sort": "玩偶",
+            "modelOverall": "${device}/Module/Model/Mdl/10000004_e.prefab.assetbundle",
+            "desc": "这个人偶真可爱呀真可爱！"
+        },
+        {
+            "uuid": 10000005,
+            "name": "玩偶5",
+            "icon": "${device}/Module/Model/Icon&10000005",
+            "sort": "玩偶",
+            "modelOverall": "${device}/Module/Model/Mdl/10000005_e.prefab.assetbundle",
+            "desc": "这个人偶真可爱呀真可爱！"
+        },
+        {
+            "uuid": 10000006,
+            "name": "玩偶6",
+            "icon": "${device}/Module/Model/Icon&10000006",
+            "sort": "玩偶",
+            "modelOverall": "${device}/Module/Model/Mdl/10000006_e.prefab.assetbundle",
+            "desc": "这个人偶真可爱呀真可爱！"
+        },
+        {
+            "uuid": 10000007,
+            "name": "玩偶7",
+            "icon": "${device}/Module/Model/Icon&10000007",
+            "sort": "玩偶",
+            "modelOverall": "${device}/Module/Model/Mdl/10000007_e.prefab.assetbundle",
+            "desc": "这个人偶真可爱呀真可爱！"
+        },
+        {
+            "uuid": 10000101,
+            "name": "动物1",
+            "icon": "${device}/Module/Model/Icon&10000101",
+            "sort": "动物",
+            "modelOverall": "${device}/Module/Model/Mdl/10000101_e.prefab.assetbundle",
+            "desc": "这个动物真可爱呀真可爱！"
+        },
+        {
+            "uuid": 10000102,
+            "name": "动物2",
+            "icon": "${device}/Module/Model/Icon&10000102",
+            "sort": "动物",
+            "modelOverall": "${device}/Module/Model/Mdl/10000102_e.prefab.assetbundle",
+            "desc": "这个动物真可爱呀真可爱！"
+        },
+        {
+            "uuid": 10000103,
+            "name": "动物3",
+            "icon": "${device}/Module/Model/Icon&10000103",
+            "sort": "动物",
+            "modelOverall": "${device}/Module/Model/Mdl/10000103_e.prefab.assetbundle",
+            "desc": "这个动物真可爱呀真可爱！"
+        },
+        {
+            "uuid": 10000104,
+            "name": "动物4",
+            "icon": "${device}/Module/Model/Icon&10000104",
+            "sort": "动物",
+            "modelOverall": "${device}/Module/Model/Mdl/10000104_e.prefab.assetbundle",
+            "desc": "这个动物真可爱呀真可爱！"
+        },
+        {
+            "uuid": 10000105,
+            "name": "动物5",
+            "icon": "${device}/Module/Model/Icon&10000105",
+            "sort": "动物",
+            "modelOverall": "${device}/Module/Model/Mdl/10000105_e.prefab.assetbundle",
+            "desc": "这个动物真可爱呀真可爱！"
+        },
+        {
+            "uuid": 10000106,
+            "name": "动物6",
+            "icon": "${device}/Module/Model/Icon&10000106",
+            "sort": "动物",
+            "modelOverall": "${device}/Module/Model/Mdl/10000106_e.prefab.assetbundle",
+            "desc": "这个动物真可爱呀真可爱！"
+        },
+        {
+            "uuid": 10000107,
+            "name": "动物7",
+            "icon": "${device}/Module/Model/Icon&10000107",
+            "sort": "动物",
+            "modelOverall": "${device}/Module/Model/Mdl/10000107_e.prefab.assetbundle",
+            "desc": "这个动物真可爱呀真可爱！"
+        },
+        {
+            "uuid": 10000108,
+            "name": "动物8",
+            "icon": "${device}/Module/Model/Icon&10000108",
+            "sort": "动物",
+            "modelOverall": "${device}/Module/Model/Mdl/10000108_e.prefab.assetbundle",
+            "desc": "这个动物真可爱呀真可爱！"
+        },
+        {
+            "uuid": 10000201,
+            "name": "生活用品1",
+            "icon": "${device}/Module/Model/Icon&10000201",
+            "sort": "生活用品",
+            "modelOverall": "${device}/Module/Model/Mdl/10000201_e.prefab.assetbundle",
+            "desc": "这是日常用品1！"
+        },
+        {
+            "uuid": 10000202,
+            "name": "生活用品2",
+            "icon": "${device}/Module/Model/Icon&10000202",
+            "sort": "生活用品",
+            "modelOverall": "${device}/Module/Model/Mdl/10000202_e.prefab.assetbundle",
+            "desc": "这是日常用品2！"
+        },
+        {
+            "uuid": 10000203,
+            "name": "生活用品3",
+            "icon": "${device}/Module/Model/Icon&10000203",
+            "sort": "生活用品",
+            "modelOverall": "${device}/Module/Model/Mdl/10000203_e.prefab.assetbundle",
+            "desc": "这是日常用品3！"
+        },
+        {
+            "uuid": 10000204,
+            "name": "生活用品4",
+            "icon": "${device}/Module/Model/Icon&10000204",
+            "sort": "生活用品",
+            "modelOverall": "${device}/Module/Model/Mdl/10000204_e.prefab.assetbundle",
+            "desc": "这是日常用品4！"
+        }
+    ]
+}

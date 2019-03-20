@@ -19,12 +19,14 @@ namespace ExcelToJson
         /// </summary>
         public static bool IsNumber(string val_)
         {
-            if (string.IsNullOrWhiteSpace(val_))
-                return false;
-
-            const string pattern = "^[0-9]*$";
-            Regex rx = new Regex(pattern);
-            return rx.IsMatch(val_);
+            int val;
+            bool isOn = false;
+            if(!val_.Equals("") && !val_.Equals(null))
+            {
+                isOn = int.TryParse(val_, out val);
+            }
+                
+            return isOn;
         }
 
         /// <summary>

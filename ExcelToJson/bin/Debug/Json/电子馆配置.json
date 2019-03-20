@@ -1,0 +1,54 @@
+{
+    "body": [
+        {
+            "uuid": "13000001_1",
+            "name": "飞机的翅膀",
+            "item": "飞机",
+            "mesh": "_翅膀",
+            "desc": "描述一个！"
+        },
+        {
+            "uuid": "13000001_2",
+            "name": "飞机的身体",
+            "item": "飞机",
+            "mesh": "_身体",
+            "desc": "描述一个！"
+        },
+        {
+            "uuid": "13000002_1",
+            "name": "大炮的翅膀",
+            "item": "大炮",
+            "mesh": "_炮管",
+            "desc": "描述一个！"
+        },
+        {
+            "uuid": "13000002_2",
+            "name": "大炮的身体",
+            "item": "大炮",
+            "mesh": "_身体",
+            "desc": "描述一个！"
+        }
+    ],
+    "data": [
+        {
+            "uuid": 13000001,
+            "name": "飞机",
+            "icon": "${device}/Module/Electric/Icon&13000001",
+            "modelShow": "${device}/Module/Electric/Mdl/13000001.prefab.assetbundle",
+            "modelPrint": "$Module/Electric/Print/13000001.obj",
+            "videoUrl": "$Module/Electric/Video/13000001.mp4",
+            "shopUrl": "www.baidu.com",
+            "desc": "这是一只胖子！"
+        },
+        {
+            "uuid": 13000002,
+            "name": "大炮",
+            "icon": "${device}/Module/Electric/Icon&13000002",
+            "modelShow": "${device}/Module/Electric/Mdl/13000002.prefab.assetbundle",
+            "modelPrint": "$Module/Electric/Print/13000002.obj",
+            "videoUrl": "$Module/Electric/Video/13000002.mp4",
+            "shopUrl": "www.baidu.com",
+            "desc": "这是一只瘦子！"
+        }
+    ]
+}

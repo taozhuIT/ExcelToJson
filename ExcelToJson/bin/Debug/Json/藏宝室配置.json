@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "uuid": 11000001,
+            "name": "主题1",
+            "icon": "${device}/Module/Model/Icon&10000001",
+            "owned": true,
+            "scene": "${device}/Scene/Home/11000001.unity.assetbundle",
+            "anchors": "P1,P2,P3,P4,P5,P6",
+            "desc": "这是主题1"
+        },
+        {
+            "uuid": 11000002,
+            "name": "主题2",
+            "icon": "${device}/Module/Model/Icon&10000002",
+            "owned": true,
+            "scene": "${device}/Scene/Home/11000002.unity.assetbundle",
+            "anchors": "P1,P2,P3,P4,P5,P6",
+            "desc": "这是主题2"
+        }
+    ]
+}
